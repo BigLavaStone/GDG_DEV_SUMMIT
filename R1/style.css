@@ -12,20 +12,21 @@ body{
     height: 100vh;
 }
 
+
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     width: 100%;
-    height: 100vh;
+    height: 30vh;
     flex-direction: column;
 }
 
 
 .head{
     color: white;
-    font-size: 10rem;
+    font-size: 4rem;
 }
 
 .head:hover{
@@ -33,3 +34,32 @@ body{
     transition-duration: 500ms;
     scale: 1.1;
 }
+
+#clickable-areas {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.clickable-area {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #B76E79; /* Rose gold color */
+    cursor: pointer;
+    opacity: 0; /* Make it invisible */
+}
+
+.cont2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70vh;
+}
+
+#ui4Nhi{
+    font-size: 2px;
+}
+

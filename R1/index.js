@@ -1,114 +1,51 @@
-// Anti-debugging measures
-(function () {
-	setInterval(() => {
-		const start = performance.now();
-		debugger;
-		const end = performance.now();
-		if (end - start > 100) {
-			window.location.reload();
-		}
-	}, 1000);
-})();
+localStorage.setItem("Data", "QuickSort");
+document.cookie = "Data = Dijkstra; expires = Thu, 18 Dec 2025 12:00:00 UTC; path=/";
 
-// Prevent right-click and keyboard shortcuts
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-document.addEventListener("keydown", (e) => {
-	if (
-		(e.ctrlKey &&
-			e.shiftKey &&
-			(e.key === "I" || e.key === "J")) ||
-		(e.ctrlKey && e.key === "u")
-	) {
-		e.preventDefault();
-		window.location.reload();
-	}
-});
-
-// Dynamic content generation with encryption
-window.onload = function () {
-	// Clear any existing content immediately
-	document.body.innerHTML = "";
-
-	const decodeStr = (str) => atob(str);
-	const container = document.createElement("div");
-
-	// Encode class names
-	container.className = decodeStr("Y29udGFpbmVy"); // container
-
-	const h1 = document.createElement("h1");
-	h1.className = decodeStr("aGVhZA=="); // head
-	h1.textContent = decodeStr("RmluZCBtZQ=="); // Find me
-
-	const h2 = document.createElement("h2");
-	h2.textContent = decodeStr("VGhpcyBpcyBXZWIgSHVudA=="); // This is Web Hunt
-
-	// Random ID assignment
-	const randomId = () => Math.random().toString(36).substr(2, 9);
-	h1.id = randomId();
-	h2.id = randomId();
-
-	container.appendChild(h1);
-	container.appendChild(h2);
-	document.body.appendChild(container);
-
-	// Add event listeners with delay
-	setTimeout(addEventListeners, 100);
-
-	// Mutation observer to prevent HTML modifications
-	const observer = new MutationObserver((mutations) => {
-		mutations.forEach((mutation) => {
-			if (!mutation.target.isConnected) {
-				window.location.reload();
-			}
-		});
-	});
-
-	observer.observe(document.body, {
-		childList: true,
-		subtree: true,
-		attributes: true,
-	});
-};
-
-function addEventListeners() {
-	let hoverCount = 0;
-	let clickCount = 0;
-
-	document.querySelector(
-		'[class="' + atob("aGVhZA==") + '"]'
-	).addEventListener("mouseover", () => {
-		hoverCount++;
-		if (hoverCount === 3) {
-			alert(
-				decodeStr(
-					"Q2xpY2sgb24gdGhlIHRleHQgNSB0aW1lcw=="
-				)
-			);
-		}
-	});
-
-	document.querySelector("h2").addEventListener("click", () => {
-		clickCount++;
-		if (clickCount <= 5) {
-			alert(`Click ${5 - clickCount} more times!`);
-			if (clickCount === 5) {
-				alert(
-					decodeStr(
-						"Q2hlY2sgeW91ciBjb25zb2xlIQ=="
-					)
-				);
-				console.clear();
-				console.log(`
-╦ ╦╔═╗╔╗   ╦ ╦╦ ╦╔╗╔╔╦╗  ╦╔═╗  ╔═╗╔╗╔
-║║║║╣ ╠╩╗  ╠═╣║ ║║║║ ║   ║╚═╗  ║ ║║║║
-╚╩╝╚═╝╚═╝  ╩ ╩╚═╝╝╚╝ ╩   ╩╚═╝  ╚═╝╝╚╝
-`);
-			}
-		}
-	});
+// Function to create a clickable area
+function createClickableArea(id) {
+    const area = document.createElement('div');
+    area.id = id;
+    area.style.position = 'absolute';
+    area.style.width = '50px';
+    area.style.height = '50px';
+    area.style.borderRadius = '50%';
+    area.style.cursor = 'grab';
+    area.style.top = Math.random() * 90 + 'vh';
+    area.style.left = Math.random() * 90 + 'vw';
+    area.onclick = function() {
+        alert('You clicked on area ' + id);
+    };
+    document.getElementById('cabl-3nwy9w4cl').appendChild(area);
 }
 
-// Helper function for decoding
-function decodeStr(str) {
-	return atob(str);
+// Create 5 clickable areas
+for (let i = 1; i <= 5; i++) {
+    createClickableArea('cabl-3nwy9w4cl-' + Math.random().toString(36).substr(2, 9));
 }
+
+// Function to fetch API data
+async function fetchData() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
+            method: 'GET',
+        });
+    } catch (error) {
+        console.log("");
+    }
+}
+
+// Fetch data on page load
+document.addEventListener('DOMContentLoaded', fetchData);
+
+
+// Clues in Title tag & Meta tag → for redirection
+// HTML , JS Comments → for redirection
+// Console logging → for redirection
+// Query String → for redirection
+
+// Cookies
+// Local Storage
+// Input Tag– hidden
+// CSS Hiding → (bg color, text size)
+// Network Sec – API Call  but will not be rendered
+// On click msg will appear (either pop up or alert msg)
