@@ -63,3 +63,50 @@ body{
     font-size: 2px;
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hidden-image {
+    width: 100%;
+    height: auto;
+    pointer-events: none; /* Prevent dragging */
+    user-select: none; /* Prevent selection */
+}
+
+.hidden-button {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    padding: 2.5px;
+    transform: translate(-50%, -50%);
+    /* background: transparent; */
+    /* border: none; */
+    color: rgb(105, 105, 201);
+    font-size: 1.3rem;
+    cursor: pointer;
+    pointer-events: auto; /* Allow clicking */
+}
+
+.hidden-button:focus {
+    outline: none;
+}
+
+.hover-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: top 0.3s, left 0.3s; /* Smooth transition for position change */
+    z-index: 9999; /* Ensure the button is on top of all elements */
+}
