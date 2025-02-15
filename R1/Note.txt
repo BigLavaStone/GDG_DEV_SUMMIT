@@ -1,0 +1,8 @@
+Haven't added -->
+Clues in Title tag & Meta tag → for redirection
+HTML , JS Comments → for redirection
+Console logging → for redirection
+Query String → for redirection
+
+not done -->
+Obfuscation of js code
