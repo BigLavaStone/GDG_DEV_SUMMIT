@@ -7,7 +7,7 @@ const gridSize = 20;
 const canvasSize = 400; 
 const rows = canvasSize / gridSize;
 const columns = canvasSize / gridSize;
-
+const controls=document.getElementsByClassName('controls')[0]
 let snake = [
   { x: 5 * gridSize, y: 5 * gridSize },
   { x: 4 * gridSize, y: 5 * gridSize },
@@ -140,6 +140,7 @@ const stopGame = () => {
   if(score===pointsToMeet) {
     hint.classList.remove("hidden");
     canvas.classList.add('hidden');
+    controls.classList.add('hidden')
     console.log('check in apis for next clue')
     getApis();
   }
