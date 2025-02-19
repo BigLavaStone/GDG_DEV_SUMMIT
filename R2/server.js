@@ -1,7 +1,7 @@
 import e from 'express';
 import axios from 'axios';
 import cors from 'cors';  
-
+import crypto from 'crypto';
 
 const app = e();
 app.use(cors());
@@ -12,8 +12,6 @@ app.get('/', async (req, res) => {
     
     const response = await axios.get('https://mocki.io/v1/5d7cfd64-59e3-4428-b415-0d2d050c87c9');
     console.log(response.data.msg);
-
-    
     res.json({
       data: {
        msg:response.data,
