@@ -68,6 +68,9 @@ body {
 	color: white;
 
   }
+  #hint{
+	display: none;
+  }
   .modal.show {
 	display: block; /* Display the modal when it has the 'show' class */
   }

@@ -1,7 +1,7 @@
 const modal = document.getElementsByClassName('modal')[0];
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const pointsToMeet = 1;
+const pointsToMeet =1;
 const gridSize = 20;
 const canvasSize = 400;
 const rows = canvasSize / gridSize;
@@ -10,6 +10,7 @@ const controls = document.getElementsByClassName('controls')[0];
 const input = document.getElementById('input');
 const submit = document.getElementById('btn');
 const passed=document.getElementsByClassName('passed')[0];
+let apimsg=null;
 let snake = [
   { x: 5 * gridSize, y: 5 * gridSize },
   { x: 4 * gridSize, y: 5 * gridSize },
@@ -24,7 +25,7 @@ let foodEaten = 0;
 let points = 5;
 let gameInterval = null;
 let isGameRunning = false;
-let modalInterval = null;  // Interval for showing modal at intervals
+let modalInterval = null;  
 
 const hint = document.getElementById("hint");
 const scoreElement = document.getElementById("score");
@@ -79,8 +80,8 @@ const gameLoop = () => {
   }
 
   if (head.x === smallPoint.x && head.y === smallPoint.y) {
-    score += 1;  // Small point gives 1 point
-    generateSmallPoint();  // Reset the small point after eating
+    score += 1;  
+    generateSmallPoint();  
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -93,7 +94,7 @@ const gameLoop = () => {
   ctx.fillStyle = "red";
   ctx.fillRect(food.x, food.y, gridSize, gridSize);
 
-  ctx.fillStyle = "blue";  // Small point is blue
+  ctx.fillStyle = "blue";  
   ctx.fillRect(smallPoint.x, smallPoint.y, gridSize, gridSize);
   
   updateScore();
@@ -139,7 +140,7 @@ const startGame = () => {
 const showModalAtIntervals = () => {
   modal.classList.remove("hidden");
 
-  // Hide the modal after 3 seconds
+  
   setTimeout(() => {
     modal.classList.add("hidden");
   }, 2000);
@@ -154,7 +155,7 @@ const stopGame = () => {
     else Scorestatus.innerHTML = "Try for more score!";
   }
   if (score >= pointsToMeet) {
-    hint.classList.remove("hidden");
+    alert('Hint: check for further hints and clues in console')
     canvas.classList.add('hidden');
     controls.classList.add('hidden');
     console.log('Check APIs for the next clue');
@@ -164,10 +165,10 @@ const stopGame = () => {
 
 submit.addEventListener('click', check);
 function check() {
-  if (input.value === 'echo') {
+  if (input.value === 'echo' && apimsg!=null ) {
     modalInterval = setInterval(() => {
       showModalAtIntervals();
-    }, 1000);  // Start showing modal every second
+    }, 1000);  
   }
 }
 
@@ -178,15 +179,16 @@ const restartGame = () => {
 
 const getApis = () => {
   fetch('http://localhost:3000')
-    .then((msg) => console.log(msg))
+    .then((msg) => 
+      {
+        apimsg=msg
+        console.log(apimsg);
+      })
     .catch((e) => console.log(e));
 };
 
-// Expose the stopModal function globally so it can be called from the console
 
 if(!modal.classList.contains('hidden') && modalInterval===null) passed.classList.remove('hidden')
-// Expose the stopModal function on the window object
-// Now `stopModal()` can be called from the console
 
 startButton.addEventListener("click", startGame);
 stopButton.addEventListener("click", stopGame);
