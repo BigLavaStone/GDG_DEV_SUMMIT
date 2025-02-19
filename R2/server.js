@@ -41,22 +41,22 @@ const decryptSymmetric = (key, ciphertext, iv, tag) => {
 const port = 3000;
 app.get('/', async (req, res) => {
   try {
-    // Simulating getting a message (replace with actual API call as needed)
-    const response = await axios.get('https://mocki.io/v1/22de06f9-5a6a-47e9-9c18-216253b9f310');
+    
+    const response = await axios.get('https://mocki.io/v1/59340f73-7a4f-4364-acb0-863d17f90673');
     console.log(response.data.msg);
 
-    // Generate a random encryption key
+    
     const key = crypto.randomBytes(32).toString('base64'); // Random key generation
     const { ciphertext, tag, iv } = encryptSymmetric(key, response.data.msg);
 
-    // Sending the encrypted data (including IV, ciphertext, and tag) to the participant
+    
     res.json({
       data: {
         ciphertext,
         tag,
-        iv,  // IV is included in the response now
-        key,  // Optionally provide the key (if you want the participant to decrypt directly)
-        message: 'You need to decrypt the message using the AES-256-GCM decryption method below.'
+        iv,  
+        key,  
+        message: 'You need to decrypt the message using the AES-256-GCM decryption method '
       }
     });  
   } catch (error) {
