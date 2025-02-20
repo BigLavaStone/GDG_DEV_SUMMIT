@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-url" content="http://localhost:3000/opsj9ylZ4/0tuIkl">
+    <meta name="api-key" content="7\x0F\x02\x1C\x02\x1B">
+    <title>GDG WEB Hunt: Round III... {Check your console}</title>
+    <link rel="stylesheet" href="style_R3.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="head">GDG WEB Hunt</h1>
+        <h2>Round 3: API Hunt</h2>
+    </div>
+    <div id="passcodeVerify" class="centered">
+        <h1>Enter the pass code</h1>
+        <input type="text" id="passcode" placeholder="Enter the passcode">
+        <button id="btn_passcode">Submit</button>
+    </div>
+    <div id="cabl-3nwy9w4cl"></div>
+    <div id="mainContent" class="centered" url="../R3_Redirects/index_R3_2.html"></div>
+    <script src="index_R3.js"></script>
+    <script>
+        console.log("Welcome to GDG Web Hunt");
+        console.log("This is the Round 3");
+        console.log("API Hunt");
+        console.log("In this round there are a total of 3 hidden keywords that you have to find");
+        console.log("And as the name suggest you have to find the API Links to access the hidden keywords");
+
+        // Function to decrypt the API key using Base64 decoding
+        function decryptBase64(encryptedKey) {
+            const decryptedKey = atob(encryptedKey);
+            return decryptedKey;
+        }
+
+
+        // Function to decrypt the API key using a simple Caesar cipher with a fixed shift
+        function decrypt1(encryptedKey) {
+            const shift = 3;
+            return encryptedKey.split('').map(char =>
+                String.fromCharCode(char.charCodeAt(0) - shift)
+            ).join('');
+        }
+
+        // Function to decrypt the API key using XOR cipher with a fixed key
+        function decrypt2(encryptedKey) {
+            const key = 'secret';
+            return encryptedKey.split('').map((char, index) =>
+                String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(index % key.length))
+            ).join('');
+        }
+    </script>
+</body>
+
+</html>

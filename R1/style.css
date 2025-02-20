@@ -7,15 +7,13 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-image: url('./Gemini_Generated_Image_i9z1mmi9z1mmi9z1.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: white;
     width: 100%;
     height: 100vh;
 }
 
-.container {
+
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,20 +21,17 @@ body{
     width: 100%;
     height: 30vh;
     flex-direction: column;
-    padding: 20px;
-    gap: 20px;
 }
 
-.head {
-    color: transparent;
-    font-size: 3.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+
+.head{
+    color: white;
+    font-size: 4rem;
 }
 
 .head:hover{
-    color: white;
-    transition-duration: 500ms; 
+    color: black;
+    transition-duration: 500ms;
     scale: 1.1;
 }
 
@@ -51,16 +46,10 @@ body{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #FF7675;
-    /* Modern coral color */
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.clickable-area:hover {
-    opacity: 0.2;
-    transform: scale(1.1);
-}
+
 .cont2{
     display: flex;
     align-items: center;
@@ -72,6 +61,7 @@ body{
 #ui4Nhi{
     font-size: 2px;
 }
+/* Check Cookies */
 
 .image-container {
     position: relative;
@@ -89,18 +79,13 @@ body{
     position: absolute;
     top: 55%;
     left: 50%;
-    padding: 8px 16px;
+    padding: 2.5px;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.9);
-    border: 2px solid #000000;
-    color: white;
-    font-size: 1.1rem;
+    color: rgb(105, 105, 201);
+    font-size: 1.3rem;
     cursor: pointer;
     pointer-events: auto;
-    border-radius: 20px;
-    transition: all 0.3s ease;
 }
-
 
 .hidden-button:focus {
     outline: none;
@@ -111,29 +96,17 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    /* Modern blue */
-    color: blue;
+    background-color: #4CAF50; /* Green */
+    color: white;
     border: none;
-    padding: 12px 28px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 9999;
-    border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s, left 0.3s; /* Smooth transition for position change */
+    z-index: 9999; /* Ensure the button is on top of all elements */
 }
 
-.hover-button:hover {
-    background-color: #1976D2;
-    transform: translate(-50%, -50%) scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.subhead {
-    font-size: 60px;
-    color: white;
-}
+/* Hint: there are 2 Keywords Hidden using CSS */
