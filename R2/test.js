@@ -1,17 +1,12 @@
-import crypto from 'crypto'
-const decryptSymmetric = (key, ciphertext, iv, tag) => {
-  const decipher = crypto.createDecipheriv(
-    "aes-256-gcm", 
-    Buffer.from(key, 'base64'),
-    Buffer.from(iv, 'base64')
-  );
-  
-  decipher.setAuthTag(Buffer.from(tag, 'base64'));
 
-  let plaintext = decipher.update(ciphertext, 'base64', 'utf8');
-  plaintext += decipher.final('utf8');
+function encryptAES256(data, password) {
+  const key = crypto.createHash('sha256').update(password).digest(); // Derive key using SHA-256
+  const iv = crypto.randomBytes(16); // Generate a random initialization vector (IV)
 
-  return plaintext;
+  const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
+  let encrypted = cipher.update(data, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+
+  // Return the encrypted data and IV as a string
+  return { encryptedData: encrypted, iv: iv.toString('hex') };
 }
-const ans=decryptSymmetric('Am4+Kz1+tsKCUzTXgFUH7iCR9TcXd2I7+DOm7NzM8QI=','gRBWAn68PGZexkPFHLD2tlXelQDo5muOUDzI2Ka3','X/0wymTVAu216e5j','OCn0P5n64BJXkQ1c/BBnAg==')
-console.log(ans);
